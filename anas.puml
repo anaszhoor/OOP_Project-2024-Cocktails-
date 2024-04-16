@@ -1,0 +1,18 @@
+@startuml
+annotation java.lang.Override
+class java.util.ArrayList
+class java.util.List
+class oop.project.anas.zhour.Blender
+class oop.project.anas.zhour.Color
+class oop.project.anas.zhour.Cup
+class oop.project.anas.zhour.Fruit
+class oop.project.anas.zhour.Milk
+class oop.project.anas.zhour.OOPProjectANASZHOUR
+interface oop.project.anas.zhour.Ingredient
+oop.project.anas.zhour.Blender ..> java.util.ArrayList
+oop.project.anas.zhour.Blender ..> java.util.List
+oop.project.anas.zhour.Fruit ..> java.lang.Override
+oop.project.anas.zhour.Fruit --|> oop.project.anas.zhour.Ingredient
+oop.project.anas.zhour.Milk ..> java.lang.Override
+oop.project.anas.zhour.Milk --|> oop.project.anas.zhour.Ingredient
+@enduml
