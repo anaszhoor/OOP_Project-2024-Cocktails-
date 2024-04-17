@@ -90,7 +90,8 @@ public class Blender implements informations {
             numberOfIngredient++;
             
         }                               
-        
+        // Add ingredient to the mixture
+        // Handle capacity constraints
     }
 
     public void blend() {
