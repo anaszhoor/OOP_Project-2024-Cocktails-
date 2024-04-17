@@ -116,6 +116,8 @@ public class Blender implements informations {
         return "Blender{" + "capacity=" + capacity + ", mixture=" + mixture + ", totalCalories=" + totalCalories + ", totalVolume=" + totalVolume + ", mixtureColor=" + mixtureColor + ", numberOfCups=" + numberOfCups + '}';
     }
 
+    //Mohammad Asafrah Test Git
+
     
     
     
