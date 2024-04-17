@@ -90,8 +90,7 @@ public class Blender implements informations {
             numberOfIngredient++;
             
         }                               
-        // Add ingredient to the mixture
-        // Handle capacity constraints
+        
     }
 
     public void blend() {
@@ -116,7 +115,7 @@ public class Blender implements informations {
         return "Blender{" + "capacity=" + capacity + ", mixture=" + mixture + ", totalCalories=" + totalCalories + ", totalVolume=" + totalVolume + ", mixtureColor=" + mixtureColor + ", numberOfCups=" + numberOfCups + '}';
     }
 
-    //Mohammad Asafrah Test Git
+    
 
     
     
