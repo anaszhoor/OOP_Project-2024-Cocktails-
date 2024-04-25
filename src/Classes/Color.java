@@ -1,20 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Classes;
 
-/**
- *
- * @author m1
- */
+
 public class Color implements informations {
     
     private int red;
     private int blue;
     private int green;
 
-    public Color(int red, int blue, int green) {
+    public Color(int red, int green, int blue) {
         this.red = red;
         this.blue = blue;
         this.green = green;

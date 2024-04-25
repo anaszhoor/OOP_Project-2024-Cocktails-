@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Classes;
 
-/**
- *
- * @author m1
- */
+
 public abstract class Ingredient implements informations {
     private double calories;
     private double volume;
@@ -18,17 +12,16 @@ public abstract class Ingredient implements informations {
         
     }
 
-    public Ingredient(double calories, double volume) {
-        this.calories = calories;
+    public Ingredient(double volume) {
         this.volume = volume;
     }
-    
-    
+     
     public Ingredient( Color color , double calories, double volume) {
         this.calories = calories;
         this.volume = volume;
         this.color = color;
     }
+    
 
     public double getCalories() {
         return calories;
