@@ -1,45 +1,53 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package Classes;
 
-/**
- *
- * @author m1
- */
+package Classes;
+import java.util.Scanner;
+
+
 public class OOPProjectANASZHOUR {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        Ingredient i1 = new Fruit("Mango" , new Color(15 , 40 ,67) , 50 , 20);
-        Ingredient i2 = new Fruit("Kiwi" , new Color(19 , 46 ,17) , 28 , 18);
-        Ingredient i3 = new Fruit("لآanana" , new Color(57 , 34 ,16) , 40 , 41);
-        Ingredient i4 = new Milk(new Color(0 , 0 , 0) , 17 , 36);
-        Ingredient i5 = new Sugar(3);
+        Scanner in = new Scanner(System.in);
         
+        Blender b1 = new Blender(1600);
         
+        System.out.println("Add Your Choosen Fruits To The Blender To Make MasterPiece Cocktail, Please!\n");
+        System.out.println("How Many Fruits Do You Want To Blend?!");
+        Integer num = in.nextInt();
         
-        Blender b1 = new Blender(800);
+        while (num > 0){
+            System.out.println("Insert The Name Of The Fruit : ");
+            String name = in.next();
+            System.out.println("What's the color of the fruit ?");
+            System.out.println("Note: You Must Enter color in RGB format (e.g., 255 0 0) : ");
+            Color color = new Color(in.nextInt() , in.nextInt() , in.nextInt());
+            
+            System.out.println("Enter The Number Of calories in Fruit ");
+            double calories = in.nextDouble();
+            
+            System.out.println("Enter The Volume Of Fruit ");
+            double volume = in.nextDouble();
+            
+            Ingredient f1 = new Fruit(name , color , calories , volume);
+            
+            b1.addIngredient(f1);num--;
+            
+        }
         
-        b1.addIngredient(i1);
-        b1.addIngredient(i2);
-        b1.addIngredient(i3);
-        b1.addIngredient(i4);
-        b1.addIngredient(i5);
+        System.out.println("Pour The Milk In The Blender : ");
+        System.out.println("Note: How many ml do you want to pour?!");
+        double v = in.nextDouble();
+        System.out.println("Note: How Many Calories In The Quantity That You Poured");
+        double c = in.nextDouble();
+            
+        Ingredient m1 = new Milk(new Color(255 , 255 , 255) , c , v);
+        b1.addIngredient(m1);
         
-        Cup c1 = new Cup(16);
-        
-        
-        
-        b1.blend();
-        
-        System.out.println(b1.pourIntoCup(c1));
-        
-        
-        
+        System.out.println("How Many Cubes Of Suger Do You Want, Don't Put That Much For Your Health ");
+        int NumberOfCubeSugar = in.nextInt();
+        Ingredient s1 = new Sugar(NumberOfCubeSugar);
+        b1.addIngredient(s1);
+   
         
     }
     

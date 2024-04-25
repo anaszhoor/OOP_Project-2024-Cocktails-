@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Classes;
 import java.util.ArrayList;
-/**
- *
- * @author m1
- */
+
 public class Blender implements informations {
     private double capacity;
     private ArrayList<Ingredient> mixture;
@@ -83,9 +77,11 @@ public class Blender implements informations {
         if (totalVolume <= capacity){
             this.mixture.add(ingredient);
             totalCalories += ingredient.getCalories();
+            
             if(ingredient.getClass() != Sugar.class){
                 totalVolume += ingredient.getVolume();
             }
+            
             numberOfCaloriesPerMl = totalCalories / totalVolume;
             numberOfIngredient++;
             
