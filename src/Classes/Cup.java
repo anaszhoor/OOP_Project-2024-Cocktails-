@@ -1,6 +1,4 @@
-
 package Classes;
-
 
 public class Cup implements informations {
     private double capacity; 
@@ -25,8 +23,10 @@ public class Cup implements informations {
         return contentCalories;
     }
 
-    public void pourCocktail() {
+    public double pourCocktail() {
         contentCalories = capacity * Blender.getNumberOfCaloriesPerMl();
+        
+        return contentCalories;
     }
 
     @Override

@@ -1,4 +1,3 @@
-
 package Classes;
 
 public class Fruit extends Ingredient{

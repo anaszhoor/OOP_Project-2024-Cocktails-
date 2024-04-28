@@ -1,6 +1,4 @@
-
 package Classes;
-
 
 public abstract class Ingredient implements informations {
     private double calories;
@@ -9,7 +7,8 @@ public abstract class Ingredient implements informations {
    
 
     public Ingredient(){
-        
+        calories = 0;
+        volume = 0;
     }
 
     public Ingredient(double volume) {

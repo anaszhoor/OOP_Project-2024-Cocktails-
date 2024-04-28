@@ -1,4 +1,3 @@
-
 package Classes;
 import java.util.ArrayList;
 
@@ -7,16 +6,17 @@ public class Blender implements informations {
     private ArrayList<Ingredient> mixture;
     private double totalCalories;
     private double totalVolume;
-    private Color mixtureColor;
     private static double numberOfCaloriesPerMl;
     private int numberOfCups;
     private static int numberOfIngredient;
+    private ArrayList<Color> mixtureColor;
 
     
     public Blender() {
     }
    
     public Blender(double capacity) {
+        this.mixtureColor = new ArrayList<>();
         this.capacity = capacity;
         this.mixture = new ArrayList<>();
         numberOfIngredient = 0;
@@ -52,14 +52,6 @@ public class Blender implements informations {
         this.totalVolume = totalVolume;
     }
 
-    public Color getMixtureColor() {
-        return mixtureColor;
-    }
-
-    public void setMixtureColor(Color mixtureColor) {
-        this.mixtureColor = mixtureColor;
-    }
-
     public static double getNumberOfCaloriesPerMl() {
         return numberOfCaloriesPerMl;
     }
@@ -73,48 +65,69 @@ public class Blender implements informations {
     }
 
     
-    public void addIngredient(Ingredient ingredient) {
-        if (totalVolume <= capacity){
+    public void addIngredient(Ingredient ingredient) throws BlenderOverflowException {
+        
+        if (totalVolume+ingredient.getVolume() < capacity){
             this.mixture.add(ingredient);
             totalCalories += ingredient.getCalories();
-            
-            if(ingredient.getClass() != Sugar.class){
-                totalVolume += ingredient.getVolume();
-            }
-            
+            totalVolume += ingredient.getVolume();
             numberOfCaloriesPerMl = totalCalories / totalVolume;
             numberOfIngredient++;
             
-        }                               
+        } 
+        else {
+            throw new BlenderOverflowException();
+        }
         // Add ingredient to the mixture
         // Handle capacity constraints
     }
 
     public void blend() {
-        System.out.println("Blender Info : \n" + " Capacity : " + capacity 
+        System.out.println("Blender Info : \n" + "Capacity : " + capacity 
                 + "\nTotal Calories : " +  totalCalories
                 + "\nTotal Volume :  " + totalVolume 
-                + "\nMixture Color: " + mixtureColor);
+                + "\nMixture Color: " + mixtureColor().getInfo() + "\n");
         // Mix the ingredients
     }
 
-    public String pourIntoCup(Cup cup) {
-        while(totalVolume >= cup.getCapacity()){
-            numberOfCups++;
-            totalVolume -= cup.getCapacity();
+    public void pourIntoCup(Cup cup) throws emptyBlenderException{
+        boolean flag = true;
+        while(flag){
+            if(totalVolume >= cup.getCapacity()){
+                numberOfCups++;
+                totalVolume -= cup.getCapacity();
+            }
+            else{
+                flag = false;
+            }
         }
-        return "Number of Cups : " + numberOfCups ;
-        // Transfer the mixture to a cup
+        System.out.println("Number of Cups : " + numberOfCups + "\nNumber of Calories per Cup : " + cup.pourCocktail() + "\n");
+
+        if(!flag)
+        {
+            throw new emptyBlenderException();
+        }
+    }
+    
+    public void addColor(Color color){
+        mixtureColor.add(color);
+    }
+    
+    public Color mixtureColor(){
+        int totalRed = 0;
+        int totalGreen = 0;
+        int totalBlue = 0;
+        for(int i = 0 ; i<mixtureColor.size() ; i++){
+            totalRed += mixtureColor.get(i).getRed();
+            totalGreen += mixtureColor.get(i).getGreen();
+            totalBlue += mixtureColor.get(i).getBlue();
+        }
+        Color color = new Color(totalRed , totalGreen , totalBlue);
+        return color;
     }
 
     @Override
     public String getInfo() {
         return "Blender{" + "capacity=" + capacity + ", mixture=" + mixture + ", totalCalories=" + totalCalories + ", totalVolume=" + totalVolume + ", mixtureColor=" + mixtureColor + ", numberOfCups=" + numberOfCups + '}';
-    }
-
-    
-
-    
-    
-    
+    }   
 }

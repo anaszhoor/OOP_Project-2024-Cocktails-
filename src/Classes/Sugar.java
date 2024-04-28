@@ -1,6 +1,4 @@
-
 package Classes;
-
 
 public class Sugar extends Ingredient {
     

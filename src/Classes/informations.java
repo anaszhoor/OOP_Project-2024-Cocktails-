@@ -1,6 +1,4 @@
-
 package Classes;
-
 
 public interface informations {
     
