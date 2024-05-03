@@ -63,16 +63,17 @@ public class OOPProjectANASZHOUR {
         try {
             System.out.println("Insert The Name Of The Fruit : ");
             String name = in.next();
-            System.out.println("What's the color of the fruit ?");
-            System.out.println("Note: You Must Enter color in RGB format (e.g., 255 0 0) : ");
-            Color color = new Color(in.nextInt(), in.nextInt(), in.nextInt());
-            b1.addColor(color);
 
             System.out.println("Enter The Number Of calories in Fruit ");
             double calories = in.nextDouble();
 
             System.out.println("Enter The Volume Of Fruit ");
             double volume = in.nextDouble();
+            
+            System.out.println("What's the color of the fruit ?");
+            System.out.println("Note: You Must Enter color in RGB format (e.g., 255 0 0) : ");
+            Color color = new Color(in.nextInt(), in.nextInt(), in.nextInt() , volume);
+            b1.addColor(color);
 
             Ingredient f1 = new Fruit(name, color, calories, volume);
 

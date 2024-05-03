@@ -114,14 +114,18 @@ public class Blender implements informations {
     }
     
     public Color mixtureColor(){
-        int totalRed = 0;
-        int totalGreen = 0;
-        int totalBlue = 0;
+        double totalRed = 0;
+        double totalGreen = 0;
+        double totalBlue = 0;
         for(int i = 0 ; i<mixtureColor.size() ; i++){
-            totalRed += mixtureColor.get(i).getRed();
-            totalGreen += mixtureColor.get(i).getGreen();
-            totalBlue += mixtureColor.get(i).getBlue();
+            totalRed += mixtureColor.get(i).getRed()/mixtureColor.get(i).getVolumeOfIngredient();
+            totalGreen += mixtureColor.get(i).getGreen()/mixtureColor.get(i).getVolumeOfIngredient();
+            totalBlue += mixtureColor.get(i).getBlue()/mixtureColor.get(i).getVolumeOfIngredient();
         }
+        totalRed *= totalVolume;
+        totalGreen *= totalVolume;
+        totalBlue *= totalVolume;
+   
         Color color = new Color(totalRed , totalGreen , totalBlue);
         return color;
     }
