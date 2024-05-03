@@ -3,18 +3,18 @@ package Classes;
 
 public class Color implements informations {
     
-    private double red;
-    private double green;
-    private double blue;
+    private int red;
+    private int green;
+    private int blue;
     private double volumeOfIngredient;
 
-    public Color(double red, double green, double blue) {
+    public Color(int red, int green, int blue) {
         this.red = red;
         this.blue = blue;
         this.green = green;
     }
 
-    public Color(double red, double green, double blue, double volumeOfIngredient) {
+    public Color(int red, int green, int blue, double volumeOfIngredient) {
         this.red = red;
         this.green = green;
         this.blue = blue;
@@ -22,7 +22,7 @@ public class Color implements informations {
     }
     
 
-    public double getRed() {
+    public int getRed() {
         return red;
     }
 
@@ -30,7 +30,7 @@ public class Color implements informations {
         this.red = red;
     }
 
-    public double getBlue() {
+    public int getBlue() {
         return blue;
     }
 
@@ -38,7 +38,7 @@ public class Color implements informations {
         this.blue = blue;
     }
 
-    public double getGreen() {
+    public int getGreen() {
         return green;
     }
 

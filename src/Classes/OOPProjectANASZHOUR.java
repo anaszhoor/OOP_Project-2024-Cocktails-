@@ -1,4 +1,5 @@
 package Classes;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,41 +11,42 @@ public class OOPProjectANASZHOUR {
         System.out.println("Add Your Choosen Fruits To The Blender To Make a MasterPiece Cocktail, Please!\n");
         Blender blender = new Blender(1600);
         Cup cup = new Cup(200);
-        
-        while (true){
+
+        while (true) {
             Minu();
             int choice = in.nextInt();
             switch (choice) {
-            case 1:
-                addFruit(blender);
-                break;
-            case 2:
-                addMilk(blender);
-                break;
-            case 3:
-                addSuger(blender);
-                break;
-            case 4:
-                blender.blend();
-                break;
-            case 5:
-                try {
-                    blender.pourIntoCup(cup);
-                } catch (emptyBlenderException ex) {
-                    ex.getMessage();
-                }
-                catch(Exception ex){
-                    ex.printStackTrace();
-                }
-                break;
-            case 6:
-                System.exit(0);
+                case 1:
+                    addFruit(blender);
+                    break;
+                case 2:
+                    addMilk(blender);
+                    break;
+                case 3:
+                    addSuger(blender);
+                    break;
+                case 4:
+                    blender.blend();
+                    break;
+                case 5:
+                    try {
+                        blender.pourIntoCup(cup);
+                    } catch (BlendException ex) {
+                        System.out.println(ex.getMessage());
+                    } catch (emptyBlenderException ex) {
+                        System.out.println(ex.getMessage());
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                    break;
+                case 6:
+                    System.exit(0);
+
+            }
 
         }
 
     }
-        
-}
 
     public static void Minu() {
         Scanner in = new Scanner(System.in);
@@ -69,15 +71,13 @@ public class OOPProjectANASZHOUR {
 
             System.out.println("Enter The Volume Of Fruit ");
             double volume = in.nextDouble();
-            
+
             System.out.println("What's the color of the fruit ?");
             System.out.println("Note: You Must Enter color in RGB format (e.g., 255 0 0) : ");
-            Color color = new Color(in.nextInt(), in.nextInt(), in.nextInt() , volume);
-            b1.addColor(color);
-
+            Color color = new Color(in.nextInt(), in.nextInt(), in.nextInt(), volume);
             Ingredient f1 = new Fruit(name, color, calories, volume);
-
             b1.addIngredient(f1);
+            b1.addColor(color);
         } catch (InputMismatchException ex) {
             System.out.println(ex.getMessage());
         } catch (BlenderOverflowException ex) {
@@ -96,10 +96,10 @@ public class OOPProjectANASZHOUR {
             double v = in.nextDouble();
             System.out.println("Note: How Many Calories In The Quantity That You Poured");
             double c = in.nextDouble();
-            Color color = new Color(255, 255, 255);
+            Color color = new Color(255, 255, 255, v);
             Ingredient m1 = new Milk(color, c, v);
-            blender.addColor(color);
             blender.addIngredient(m1);
+            blender.addColor(color);
         } catch (InputMismatchException ex) {
             System.out.println(ex.getMessage());
         } catch (BlenderOverflowException ex) {
@@ -117,7 +117,7 @@ public class OOPProjectANASZHOUR {
             int NumberOfCubeSugar = in.nextInt();
             Ingredient s1 = new Sugar(NumberOfCubeSugar);
             blender.addIngredient(s1);
-            
+
         } catch (InputMismatchException ex) {
             System.out.println(ex.getMessage());
         } catch (BlenderOverflowException ex) {
