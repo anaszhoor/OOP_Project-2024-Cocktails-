@@ -58,6 +58,7 @@ public class OOPProjectANASZHOUR {
         System.out.println("3) Add Suger ");
         System.out.println("4) Blend ");
         System.out.println("5) pour in cup");
+        System.out.println("6) Exit");
     }
 
     public static void addFruit(Blender b1) {
@@ -73,7 +74,7 @@ public class OOPProjectANASZHOUR {
             double volume = in.nextDouble();
 
             System.out.println("What's the color of the fruit ?");
-            System.out.println("Note: You Must Enter color in RGB format (e.g., 255 0 0) : ");
+            System.out.println("Note: You Must Enter color in RGB format (e.g., 255 100 150) : ");
             Color color = new Color(in.nextInt(), in.nextInt(), in.nextInt(), volume);
             Ingredient f1 = new Fruit(name, color, calories, volume);
             b1.addIngredient(f1);
@@ -92,9 +93,9 @@ public class OOPProjectANASZHOUR {
         Scanner in = new Scanner(System.in);
         try {
             System.out.println("Pour The Milk In The Blender : ");
-            System.out.println("Note: How many ml do you want to pour?!");
+            System.out.println("How many ml do you want to pour?!");
             double v = in.nextDouble();
-            System.out.println("Note: How Many Calories In The Quantity That You Poured");
+            System.out.println("How Many Calories In The Quantity That You Poured");
             double c = in.nextDouble();
             Color color = new Color(255, 255, 255, v);
             Ingredient m1 = new Milk(color, c, v);

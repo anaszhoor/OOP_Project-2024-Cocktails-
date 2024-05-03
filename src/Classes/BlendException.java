@@ -12,7 +12,7 @@ public class BlendException extends Exception{
 
     @Override
     public String getMessage() {
-        return "You Must Blend The Ingredient Befor Pour Into Cup";
+        return "You Must Blend The Ingredient Befor Pour Into Cup ^_^";
     }
     
 }
