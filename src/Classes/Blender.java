@@ -97,14 +97,20 @@ public class Blender implements informations {
         }
         boolean flag = true;
         while (flag) {
-            if (totalVolume >= cup.getCapacity()) {
+            if (totalVolume > 0) {
                 numberOfCups++;
-                totalVolume -= cup.getCapacity();
+                if (totalVolume >= cup.getCapacity()) {
+                    totalVolume -= cup.getCapacity();
+                } else {
+                    totalVolume = 0;
+                }
+
             } else {
                 flag = false;
             }
         }
-        System.out.println("Number of Cups : " + numberOfCups + "\nNumber of Calories per Cup : " + cup.pourCocktail() + "\n");
+
+        System.out.println("Number of Cups : " + numberOfCups + "\nNumber of Calories per Cup : " + Math.round((double) cup.pourCocktail()) + "\n");
 
         if (!flag) {
             throw new emptyBlenderException();
@@ -123,14 +129,12 @@ public class Blender implements informations {
         double volumeRatio = 0.0;
         double tValume = 0.0;
 
-
-        for (int i = 0; i < mixtureColor.size(); i++)
-        {
+        for (int i = 0; i < mixtureColor.size(); i++) {
             tValume += mixtureColor.get(i).getVolumeOfIngredient();
         }
         // Calculate total volume and sum up RGB values scaled by volume ratios
         for (int i = 0; i < mixtureColor.size(); i++) {
-            volumeRatio = (double)(mixtureColor.get(i).getVolumeOfIngredient()) / (double)tValume;
+            volumeRatio = (double) (mixtureColor.get(i).getVolumeOfIngredient()) / (double) tValume;
             totalVolume += mixtureColor.get(i).getVolumeOfIngredient();
             totalRed += mixtureColor.get(i).getRed() * volumeRatio;
             totalGreen += mixtureColor.get(i).getGreen() * volumeRatio;
@@ -143,7 +147,7 @@ public class Blender implements informations {
         totalRed *= volumeScale;
         totalGreen *= volumeScale;
         totalBlue *= volumeScale;
-    
+
         Color color = new Color((int) totalRed, (int) totalGreen, (int) totalBlue);
         return color;
     }
