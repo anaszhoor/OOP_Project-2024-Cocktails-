@@ -3,7 +3,9 @@ package Classes;
 public class Cup implements informations {
     private double capacity; 
     private double contentCalories;
-    
+
+    public Cup() {
+    }
     
     public Cup(double capacity) {
         this.capacity = capacity;
@@ -32,12 +34,6 @@ public class Cup implements informations {
     @Override
     public String getInfo() {
         return "Cup{" + "capacity=" + capacity + ", contentCalories=" + contentCalories + '}';
-    }
-    
-    
-
-    
-    
-    
+    }   
     
 }
