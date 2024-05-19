@@ -1,0 +1,21 @@
+19/5/2024--12
+Adding Ingredient to the Blender ...
+Blender State : 
+Blender{capacity=1600.0, mixture=[Classes.Fruit@24786f19], totalCalories=800.0, totalVolume=500.0, mixtureColor=Classes.Color@3e01214a, numberOfCups=0}
+----------------------------------------------------19/5/2024--12
+Adding Ingredient to the Blender ...
+Blender State : 
+Blender{capacity=1600.0, mixture=[Classes.Fruit@24786f19, Classes.Milk@d2a60a0], totalCalories=1300.0, totalVolume=700.0, mixtureColor=Classes.Color@48ee2031, numberOfCups=0}
+----------------------------------------------------19/5/2024--12
+The Mixing Process Is Done19/5/2024--12
+The Cocktail is Poured
+----------------------------------------------------19/5/2024--12
+The Cocktail is Poured
+----------------------------------------------------19/5/2024--12
+The Cocktail is Poured
+----------------------------------------------------19/5/2024--12
+The Cocktail is Poured
+----------------------------------------------------19/5/2024--12
+Empty Blender Exception!!
+The Blender Became Empty !!!
+----------------------------------------------------

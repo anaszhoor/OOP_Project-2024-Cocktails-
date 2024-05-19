@@ -1,6 +1,7 @@
 package Classes;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Blender implements informations {
 
@@ -13,17 +14,27 @@ public class Blender implements informations {
     private static int numberOfIngredient;
     private ArrayList<Color> mixtureColor;
     private boolean isBlend = false;
+    private Logger logger;
 
     public Blender() {
     }
 
-    public Blender(double capacity) {
+    public Blender(double capacity , Logger logger) {
         this.mixtureColor = new ArrayList<>();
         this.capacity = capacity;
         this.mixture = new ArrayList<>();
         numberOfIngredient = 0;
         numberOfCaloriesPerMl = 0;
         numberOfCups = 0;
+        this.logger = logger;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 
     public double getCapacity() {
@@ -66,6 +77,7 @@ public class Blender implements informations {
         this.numberOfCups = numberOfCups;
     }
 
+    Calendar c = Calendar.getInstance();
     public void addIngredient(Ingredient ingredient) throws BlenderOverflowException {
 
         if (totalVolume + ingredient.getVolume() < capacity) {
@@ -74,8 +86,12 @@ public class Blender implements informations {
             totalVolume += ingredient.getVolume();
             numberOfCaloriesPerMl = totalCalories / totalVolume;
             numberOfIngredient++;
+            logger.log(c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH)+1) + "/" + c.get(Calendar.YEAR)  + "--" + c.get(Calendar.HOUR_OF_DAY)
+            + "\nAdding Ingredient to the Blender ..."
+            + "\nBlender State : \n" + getInfo() + "\n----------------------------------------------------");
 
         } else {
+            logger.log("Over Flow Exception!!\nEnough, It Will Overflow -_-\nNote: You Can Add a Smaller Peace Of Ingredient ^_^" + "\n----------------------------------------------------");
             throw new BlenderOverflowException();
         }
         // Add ingredient to the mixture
@@ -88,11 +104,14 @@ public class Blender implements informations {
                 + "\nTotal Calories : " + totalCalories
                 + "\nTotal Volume :  " + totalVolume
                 + "\nMixture Color: " + mixtureColor().getInfo() + "\n");
+        logger.log("\n" + c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH)+1) + "/" + c.get(Calendar.YEAR)  + "--" + c.get(Calendar.HOUR_OF_DAY) + "\nThe Mixing Process Is Done" + "\n----------------------------------------------------");
+        
         // Mix the ingredients
     }
 
     public void pourIntoCup(Cup cup) throws emptyBlenderException, BlendException {
         if (!isBlend) {
+            logger.log("\n" + c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH)+1) + "/" + c.get(Calendar.YEAR)  + "--" + c.get(Calendar.HOUR_OF_DAY) + "\nBlend Exception!!\n" + "You Must Blend The Ingredient Befor Pour Into Cup ^_^" + "\n----------------------------------------------------");
             throw new BlendException();
         }
         boolean flag = true;
@@ -104,6 +123,7 @@ public class Blender implements informations {
                 } else {
                     totalVolume = 0;
                 }
+                logger.log("\n" + c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH)+1) + "/" + c.get(Calendar.YEAR)  + "--" + c.get(Calendar.HOUR_OF_DAY) + "\nThe Cocktail is Poured" + "\n----------------------------------------------------");
 
             } else {
                 flag = false;
@@ -113,6 +133,7 @@ public class Blender implements informations {
         System.out.println("Number of Cups : " + numberOfCups + "\nNumber of Calories per Cup : " + Math.round((double) cup.pourCocktail()) + "\n");
 
         if (!flag) {
+            logger.log("\n" + c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH)+1) + "/" + c.get(Calendar.YEAR)  + "--" + c.get(Calendar.HOUR_OF_DAY) + "\nEmpty Blender Exception!!\n" + "The Blender Became Empty !!!" + "\n----------------------------------------------------");
             throw new emptyBlenderException();
         }
     }
@@ -154,6 +175,6 @@ public class Blender implements informations {
 
     @Override
     public String getInfo() {
-        return "Blender{" + "capacity=" + capacity + ", mixture=" + mixture + ", totalCalories=" + totalCalories + ", totalVolume=" + totalVolume + ", mixtureColor=" + mixtureColor + ", numberOfCups=" + numberOfCups + '}';
+        return "Blender{" + "capacity=" + capacity + ", mixture=" + mixture + ", totalCalories=" + totalCalories + ", totalVolume=" + totalVolume + ", mixtureColor=" + mixtureColor() + ", numberOfCups=" + numberOfCups + '}';
     }
 }

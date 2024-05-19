@@ -1,24 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Classes;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author m1
- */
 public class MainGUI {
 
     public Blender blender;
     private Cup cup;
+    private Logger FileLogger = new FileLogger("mylog.log");
 
     public MainGUI() {
-        blender = new Blender(1600);
+        blender = new Blender(1600 , FileLogger);
         cup = new Cup(200);
     }
     

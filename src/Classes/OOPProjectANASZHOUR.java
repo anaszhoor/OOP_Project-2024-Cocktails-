@@ -1,5 +1,6 @@
 package Classes;
 
+import Classes.FileLogger;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +10,8 @@ public class OOPProjectANASZHOUR {
         Scanner in = new Scanner(System.in);
         System.out.println("\" This Application is about blending fruits to make great and delicious Cocktails \"");
         System.out.println("Add Your Choosen Fruits To The Blender To Make a MasterPiece Cocktail, Please!\n");
-        Blender blender = new Blender(1600);
+        Logger FileLogger = new FileLogger("ConsoleLog.log");
+        Blender blender = new Blender(1600 , FileLogger);
         Cup cup = new Cup(200);
 
         while (true) {

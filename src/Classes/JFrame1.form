@@ -49,12 +49,10 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jButton10" max="32767" attributes="0"/>
                       <Component id="jButton9" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton3" max="32767" attributes="0"/>
-                          <Component id="jButton2" max="32767" attributes="0"/>
-                          <Component id="jButton1" max="32767" attributes="0"/>
-                          <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jButton3" max="32767" attributes="0"/>
+                      <Component id="jButton2" max="32767" attributes="0"/>
+                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
@@ -503,7 +501,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Kokonor" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Cubes Of Suger Do You Want :"/>
+                <Property name="text" type="java.lang.String" value="Cubes Of Suger You Want :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cubeSugarTextField">
